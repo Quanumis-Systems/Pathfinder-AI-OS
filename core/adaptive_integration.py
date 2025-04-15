@@ -210,3 +210,20 @@ class DelegationSystem:
             "oversight": oversight,
             "review_schedule": await self._create_review_schedule(preferences)
         }
+
+class EventBus:
+    """A simple event bus for handling system events."""
+    def __init__(self):
+        self.subscribers = {}
+
+    def subscribe(self, event_type: str, callback):
+        """Subscribe a callback to a specific event type."""
+        if event_type not in self.subscribers:
+            self.subscribers[event_type] = []
+        self.subscribers[event_type].append(callback)
+
+    def publish(self, event_type: str, event_data: Dict):
+        """Publish an event to all subscribers of the event type."""
+        if event_type in self.subscribers:
+            for callback in self.subscribers[event_type]:
+                callback(event_data)

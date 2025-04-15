@@ -1,7 +1,7 @@
 # pathfinder_os/core/interface_evolution.py
 
 import torch
-from typing import Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 from datetime import datetime
 import asyncio
 from dataclasses import dataclass, field

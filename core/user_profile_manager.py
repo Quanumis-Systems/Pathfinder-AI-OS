@@ -190,3 +190,16 @@ class UserProfileManager:
                 "screen_reader": False
             }
         }
+
+class StorageManager:
+    """A simple storage manager for handling user profile data."""
+    def __init__(self):
+        self.storage = {}
+
+    def save(self, key: str, value: Dict):
+        """Save data to the storage."""
+        self.storage[key] = value
+
+    def load(self, key: str) -> Optional[Dict]:
+        """Load data from the storage."""
+        return self.storage.get(key)

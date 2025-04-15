@@ -1,9 +1,13 @@
-# pathfinder_os/core/neural_pattern_recognition.py
+# This module implements Neural Pattern Recognition for Pathfinder AI OS.
+# It leverages machine learning models to identify and adapt to user-specific
+# patterns across various dimensions such as behavior, cognition, and emotions.
 
+# Importing necessary libraries for neural network operations, type annotations,
+# and data manipulation.
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from typing import Dict, List, Tuple, Optional, Union
+from typing import Dict, List, Tuple, Optional, Union, Any
 import numpy as np
 from datetime import datetime
 import asyncio
@@ -11,13 +15,15 @@ from dataclasses import dataclass, field
 from enum import Enum
 import json
 
+# Enum to categorize different types of patterns recognized by the system.
+# These categories help in tailoring the system's responses to user needs.
 class PatternType(Enum):
-    BEHAVIORAL = "behavioral"
-    COGNITIVE = "cognitive"
-    EMOTIONAL = "emotional"
-    CONTEXTUAL = "contextual"
-    TEMPORAL = "temporal"
-    SPATIAL = "spatial"
+    BEHAVIORAL = "behavioral"  # Patterns in user behavior.
+    COGNITIVE = "cognitive"    # Patterns in cognitive processes.
+    EMOTIONAL = "emotional"    # Patterns in emotional states.
+    CONTEXTUAL = "contextual"  # Patterns based on context or environment.
+    TEMPORAL = "temporal"      # Time-based patterns.
+    SPATIAL = "spatial"        # Location-based patterns.
 
 @dataclass
 class Pattern:
